@@ -32,7 +32,6 @@ namespace SE_15_UI
             ShowSinhVien();
             if (typeUser == "UserKhoa") SetView_Khoa();
             SetCBB();
-            //dtgvSinhVien.Columns[0].Visible = false;
         }
 
         private void SetView_Khoa()
@@ -80,7 +79,6 @@ namespace SE_15_UI
             }
 
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
 
@@ -95,7 +93,7 @@ namespace SE_15_UI
                     SinhVien sv = new SinhVien();
                     sv.IDSinhVien = Convert.ToInt32(Convert.ToInt32(r[0].Cells["Column1"].Value));
                     SinhVien_BLL.Instance.DelSV_BLL(sv);
-                    MessageBox.Show("Xóa/Hủy thành công!");
+                    MessageBox.Show("Xóa thành công!");
                 }
             }
             dtgvSinhVien.DataSource = SinhVien_BLL.Instance.GetListSV_BLL().ToList();
@@ -138,17 +136,17 @@ namespace SE_15_UI
         {
             if (this.Width > (Screen.PrimaryScreen.Bounds.Width * 70 / 100))
             {
-                btnXem.Image = new Bitmap("Resource\\Read64.png");
-                btnXoa.Image = new Bitmap("Resource\\Delete64.png");
-                btnThem.Image = new Bitmap("Resource\\Add64.png");
-                btnSua.Image = new Bitmap("Resource\\Edit64.png");
+                btnXem.Image = SE_15_UI.Properties.Resources.Read64;
+                btnXoa.Image = SE_15_UI.Properties.Resources.Delete64;
+                btnThem.Image = SE_15_UI.Properties.Resources.Create64;
+                btnSua.Image = SE_15_UI.Properties.Resources.Edit64;
             }
             else
             {
-                btnXem.Image = new Bitmap("Resource\\Read32.png");
-                btnXoa.Image = new Bitmap("Resource\\Delete32.png");
-                btnThem.Image = new Bitmap("Resource\\Add32.png");
-                btnSua.Image = new Bitmap("Resource\\Edit32.png");
+                btnXem.Image = SE_15_UI.Properties.Resources.Read32;
+                btnXoa.Image = SE_15_UI.Properties.Resources.Delete32;
+                btnThem.Image = SE_15_UI.Properties.Resources.Create32;
+                btnSua.Image = SE_15_UI.Properties.Resources.Edit32;
             }
         }
 
@@ -161,6 +159,7 @@ namespace SE_15_UI
             else
             {
                 dtgvSinhVien.DataSource = SinhVien_BLL.Instance.GetListSV_Where_BLL(((Khoa_DTO)cbbKhoa.SelectedItem).IDKhoa);
+ 
             }
         }
     }
